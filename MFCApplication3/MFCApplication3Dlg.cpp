@@ -182,7 +182,7 @@ HCURSOR CMFCApplication3Dlg::OnQueryDragIcon()
 
 void CMFCApplication3Dlg::OnBnClickedButton1()//l.1
 {
-	img = imread("dog.bmp");
+	img = imread("./img/dog.bmp");
 	AllocConsole();
 	freopen("CONOUT$", "w", stdout);
 	cout << "Height = " << img.rows << endl;
@@ -216,7 +216,7 @@ void RGB_trans(Mat* img) {
 void CMFCApplication3Dlg::OnBnClickedButton2()//1.2
 {
 	// TODO: 北兜矪瞶盽Α祘Α絏
-	img = imread("color.png");
+	img = imread("./img/color.png");
 	Mat copy = img.clone();
 	RGB_trans(&copy);
 	namedWindow("Mix Color");
@@ -230,7 +230,7 @@ void CMFCApplication3Dlg::OnBnClickedButton2()//1.2
 
 void CMFCApplication3Dlg::OnBnClickedButton3()//1.3
 {
-	img = imread("dog.bmp");
+	img = imread("./img/dog.bmp");
 	Mat copy = img.clone();
 	flip(img,copy,1);
 	namedWindow("flip");
@@ -253,7 +253,7 @@ void text(int i, void*)
 void CMFCApplication3Dlg::OnBnClickedButton4()//1.4
 {	
 	int i = 0;
-	img = imread("dog.bmp");
+	img = imread("./img/dog.bmp");
 	mirror = img.clone();
 	output = img.clone();
 	flip(img, mirror, 1);
@@ -271,7 +271,7 @@ void CMFCApplication3Dlg::OnBnClickedButton4()//1.4
 void CMFCApplication3Dlg::OnBnClickedButton5()//2.1
 {
 	// TODO: 北兜矪瞶盽Α祘Α絏
-	img = imread("QR.png");
+	img = imread("./img/QR.png");
 	cvtColor(img,output,COLOR_BGR2GRAY);
 	namedWindow("Oringinal image");
 	namedWindow("Threshold image");
@@ -290,7 +290,7 @@ void CMFCApplication3Dlg::OnBnClickedButton6()//2.2
 {
 	// TODO: 北兜矪瞶盽Α祘Α絏
 
-	img = imread("QR.png");
+	img = imread("./img/QR.png");
 	cvtColor(img, output, COLOR_BGR2GRAY);
 	namedWindow("Oringinal image");
 	imshow("Oringinal image", img);
@@ -316,7 +316,7 @@ void CMFCApplication3Dlg::OnBnClickedButton7()//3.1
 	double scale_double = (double)_ttof(scale);
 	double tx_double = (double)_ttof(tx);
 	double ty_double = (double)_ttof(ty);
-	img = imread("OriginalTransform.png");
+	img = imread("./img/OriginalTransform.png");
 	namedWindow("Oringinal Image");
 	imshow("Oringinal Image",img);
 	Mat t_mat = Mat::zeros(2, 3, CV_32FC1);
@@ -372,7 +372,7 @@ void my_mouse_callback(int event,int x,int y,int flags,void* param) {
 void CMFCApplication3Dlg::OnBnClickedButton8()//3.2
 {
 	index = 0;
-	img = imread("OriginalPerspective.png");
+	img = imread("./img/OriginalPerspective.png");
 	namedWindow("OriginalPerspective");
 	imshow("OriginalPerspective", img);
 	setMouseCallback("OriginalPerspective", my_mouse_callback, NULL);
@@ -463,7 +463,7 @@ float calculateSD(float* data,float* mean,int total)
 void CMFCApplication3Dlg::OnBnClickedButton9()//4.1
 {
 	// TODO: 北兜矪瞶盽Α祘Α絏
-	img = imread("School.jpg");
+	img = imread("./img/School.jpg");
 	Mat temp = RGBtoGRAY(img);
 	output = gaussian_smooth(temp);
 	namedWindow("Gaussian");
@@ -542,7 +542,7 @@ Mat sobel(Mat image,int x_y) {
 
 void CMFCApplication3Dlg::OnBnClickedButton10()//sobel; x
 {
-	img = imread("School.jpg");
+	img = imread("./img/School.jpg");
 	Mat temp = RGBtoGRAY(img);
 	temp = gaussian_smooth(temp);
 	output = sobel(temp,0);
@@ -558,7 +558,7 @@ void CMFCApplication3Dlg::OnBnClickedButton10()//sobel; x
 
 void CMFCApplication3Dlg::OnBnClickedButton11()//sobel y
 {
-	img = imread("School.jpg");
+	img = imread("./img/School.jpg");
 	Mat temp = RGBtoGRAY(img);
 	temp = gaussian_smooth(temp);
 	output = sobel(temp, 1);
@@ -606,7 +606,7 @@ Mat magnititude(Mat sobel_x,Mat sobel_y) {
 
 void CMFCApplication3Dlg::OnBnClickedButton12()//magnitude
 {
-	img = imread("School.jpg");
+	img = imread("./img/School.jpg");
 	Mat temp = RGBtoGRAY(img);
 	temp = gaussian_smooth(temp);
 	Mat sobel_x = sobel(temp,0);
